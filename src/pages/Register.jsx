@@ -5,6 +5,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { register, reset } from "../features/auth/authSlice";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import Spinner from "../components/Spinner";
 
 function Register() {
   const navigate = useNavigate();
@@ -54,6 +55,9 @@ function Register() {
       dispatch(register(userData));
     }
   };
+  if (isLoading) {
+    return <Spinner />;
+  }
   return (
     <>
       <section className='heading'>
