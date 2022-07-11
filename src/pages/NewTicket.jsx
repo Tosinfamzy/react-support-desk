@@ -9,8 +9,9 @@ import BackButton from "../components/BackButton";
 function NewTicket() {
   const { user } = useSelector((state) => state.auth);
   const { isLoading, isError, isSuccess, message } = useSelector(
-    (state) => state.ticket
+    (state) => state.tickets
   );
+
   const [name] = useState(user.name);
   const [email] = useState(user.email);
   const [product, setProduct] = useState("");
@@ -23,12 +24,14 @@ function NewTicket() {
     if (isError) {
       toast.error(message);
     }
+
     if (isSuccess) {
       dispatch(reset());
       navigate("/tickets");
     }
+
     dispatch(reset());
-  }, [dispatch, isError, isSuccess, message, navigate]);
+  }, [dispatch, isError, isSuccess, navigate, message]);
 
   const onSubmit = (e) => {
     e.preventDefault();
@@ -38,9 +41,10 @@ function NewTicket() {
   if (isLoading) {
     return <Spinner />;
   }
+
   return (
     <>
-      <BackButton url={"/"} />
+      <BackButton url='/' />
       <section className='heading'>
         <h1>Create New Ticket</h1>
         <p>Please fill out the form below</p>
