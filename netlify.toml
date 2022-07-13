@@ -1,5 +1,5 @@
 [[redirects]]
   from = "/api/*"
-  to = "https://tosin-supportdesk.herokuapp.com/api"
+  to = "https://tosin-supportdesk.herokuapp.com/api/*"
   status = 200
   force = true
